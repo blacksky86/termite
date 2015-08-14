@@ -902,6 +902,12 @@ gboolean key_press_cb(VteTerminal *vte, GdkEventKey *event, keybind_info *info) 
             case GDK_KEY_Tab:
                 overlay_show(&info->panel, overlay_mode::completion, vte);
                 return TRUE;
+            case GDK_KEY_y:
+                vte_terminal_copy_clipboard(vte);
+                return TRUE;
+            case GDK_KEY_v:
+                vte_terminal_paste_clipboard(vte);
+                return TRUE;
             default:
                 if (modify_key_feed(event, info))
                     return TRUE;
